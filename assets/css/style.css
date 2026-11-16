@@ -1,0 +1,919 @@
+/* ==========================================================================
+   CUSTOM PORTFOLIO TEMPLATE STYLES (Bootstrap 5 Accent)
+   ========================================================================== */
+
+/* Renk Değişkenleri (Global Variables) */
+:root {
+    --accent-color: #D4AF37;       /* İmza rengimiz: Canlı Turuncu */
+    --accent-hover: #B8962E;       /* Koyu Turuncu (Hover durumları için) */
+    --transition-speed: 0.3s;      /* Akıcı geçiş animasyon hızı */
+}
+
+/* Genel Seçiciler & Yumuşak Kaydırma */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Navbar Özelleştirmeleri */
+.navbar-brand img {
+    transition: transform var(--transition-speed) ease;
+}
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color var(--transition-speed) ease;
+}
+
+/* Aktif sayfa linki ve hover durumunda turuncu parlaması */
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--accent-color) !important;
+}
+
+/* Turuncu Buton Sınıfımız (Bootstrap Butonlarını Ezmeden Ekstra Güç) */
+.btn-accent {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 48, 48, 0.3);
+}
+
+.btn-outline-accent {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    background: transparent;
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-outline-accent:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Hero Alanı (Giriş Ekranı) Tasarımı */
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-img {
+    max-height: 450px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+/* Fotoğraf Galerisi (Photography) İçin Masonry/Grid Temeli */
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform var(--transition-speed) ease;
+}
+
+.gallery-item img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Footer Alt Çizgi Ayarı */
+footer {
+    border-top: 1px solid rgba(120, 120, 120, 0.15);
+}
+
+/* Tema Değiştirici Buton (Floating Toggle) Stili */
+.theme-toggle-btn {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50px;
+    transition: all var(--transition-speed) ease;
+}
+
+.hero-badge {
+    background-color: var(--accent-color) !important;
+}
+
+.hero-name-accent,
+.summary-heading,
+.summary-link,
+.feature-icon {
+    color: var(--accent-color);
+}
+
+.summary-text {
+    text-align: justify;
+    line-height: 1.7;
+}
+
+.accent-heading {
+    color: var(--accent-color);
+}
+
+.projects-page {
+    max-width: 950px;
+}
+
+.about-section {
+    max-width: 900px;
+}
+
+.blog-page {
+    max-width: 800px;
+}
+
+.blog-save-btn,
+.contact-submit-btn {
+    background-color: var(--accent-color);
+    border: none;
+}
+
+.photography-sidebar {
+    top: 100px;
+}
+
+.archive-heading,
+.section-heading {
+    color: var(--accent-color);
+}
+
+.skills-page {
+    max-width: 1000px;
+}
+
+.cert-modal-image {
+    max-height: 75vh;
+    width: auto;
+}
+
+
+/*Galeri formatı*/
+
+/* ==========================================================================
+   NOAH KALINA STYLE COMPACT MASONRY GALLERY (8-sütun)
+   ========================================================================== */
+
+.photography-gallery {
+    /* Büyük ekranlarda 8 sütunlu kompakt düzen */
+    column-count: 5;
+    column-gap: 5px; /* İkonik sıkı görünüm için dar yatay boşluk */
+    width: 100%;
+}
+
+.gallery-card {
+    background-color: transparent;
+    break-inside: avoid; /* Sütun geçişlerinde resmin kesilmesini önler */
+    margin-bottom: 5px; /* Sıkı görünüm için dar dikey boşluk */
+    overflow: hidden;
+    border-radius: 5px; /* Tam referanstaki gibi keskin ve minimal kenarlar */
+    cursor: pointer;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto; /* Orijinal en-boy oranını milimetrik korur */
+    display: block;
+    object-fit: cover;
+    transition: filter var(--transition-speed) ease;
+}
+
+/* Hover Durumu: Resmi büyütmeden, sadece hafifçe aydınlatarak şık bir odaklanma sağlar */
+.gallery-card:hover img {
+    filter: brightness(1.2);
+}
+
+/* Farklı Ekran Genişliklerine Göre Sütun Sayısı Yönetimi (Responsive) */
+@media (max-width: 1600px) {
+    .photography-gallery {
+        column-count: 6;
+    }
+}
+
+@media (max-width: 1200px) {
+    .photography-gallery {
+        column-count: 5;
+    }
+}
+
+@media (max-width: 992px) {
+    .photography-gallery {
+        column-count: 4;
+    }
+}
+
+@media (max-width: 768px) {
+    .photography-gallery {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 480px) {
+    .photography-gallery {
+        column-count: 2; /* Mobilde bile şık durması için yan yana 2 kare */
+    }
+}
+
+
+/* ========================================================================== */
+/* about.html — extracted embedded styles (originally inside <style> in about.html) */
+/* ========================================================================== */
+/* Bu sayfaya özel okunurluğu artıran ince ayarlar */
+.about-section h2 {
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.about-section p {
+    line-height: 1.8;
+    text-align: justify;
+    font-weight: 400;
+}
+.about-divider {
+    border-top: 1px solid rgb(255, 255, 255, 0.15);
+    margin: 2.5rem 0;
+}
+[data-bs-theme="light"] .about-divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Sosyal medya ikonları hover efekti (tekrar eden kurallar burada merkezi hale getirildi) */
+.bi { transition: color 0.3s ease; }
+.gap-4 a:hover { color: var(--accent-color) !important; }
+
+
+/* ========================================================================== */
+/* index.html — extracted embedded styles (originally inside <style> in index.html) */
+/* ========================================================================== */
+/* --- ANA SAYFA (HERO) ÖZEL STİLLERİ --- */
+.hero-section {
+    min-height: calc(100vh - 90px); /* Navbar yüksekliğini çıkar */
+    background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Arka plan karartma overlay'i (Abartmadan) */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); /* Karartma oranı (0.0 - 1.0) */
+    z-index: 1;
+}
+
+/* Yazıları overlay'in önüne çıkarma */
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* Arka plan karartmasının önünde */
+}
+
+/* Yazı renklerini beyazlatma */
+.hero-section h1,
+.hero-section h3,
+.hero-section p.lead {
+    color: #ffffff !important;
+}
+
+.hero-section p.lead {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Okunabilirlik için hafif gölge */
+}
+
+/* --- YENİ EKLENEN BÖLÜM STİLLERİ --- */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(216, 4, 4, 0.08);
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-color);
+}
+[data-bs-theme="light"] .feature-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Alt kısımlar için ikon hover merkezi kuralları */
+.footer .bi:hover {
+    color: var(--accent-color) !important;
+}
+
+
+/* ========================================================================== */
+/* skills.html — extracted embedded styles (originally inside <style> in skills.html) */
+/* ========================================================================== */
+/* Modern Bölüm Ayırıcıları */
+.skills-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 4rem 0;
+}
+[data-bs-theme="light"] .skills-divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Teknolojik Kart Tasarımları */
+.tech-card {
+    background-color: var(--bs-body-tertiary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+[data-bs-theme="light"] .tech-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.tech-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.tech-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+}
+[data-bs-theme="light"] .tech-icon-wrapper {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+.tech-icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Sertifika Kartı Stilleri */
+.cert-card {
+    background-color: var(--bs-body-tertiary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+}
+[data-bs-theme="light"] .cert-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.cert-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+}
+.cert-img-wrapper {
+    height: 160px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+[data-bs-theme="light"] .cert-img-wrapper {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.cert-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.cert-card:hover .cert-img-wrapper img {
+    transform: scale(1.04);
+}
+
+
+/* ========================================================================== */
+/* projects.html — extracted embedded styles (originally inside <style> in projects.html) */
+/* ========================================================================== */
+.project-card {
+    background-color: var(--bs-body-tertiary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+}
+
+[data-bs-theme="light"] .project-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+/* Sol Taraftaki Görsel Alanı */
+.project-img-wrapper {
+    width: 100%;
+    height: 240px;
+    background-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .project-img-wrapper {
+        width: 300px;
+        height: 100%;
+        min-height: 240px;
+    }
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 100%;
+}
+
+/* collapse açıldığında dönen ok animasyonu */
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+.project-card[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+    color: var(--accent-color) !important;
+}
+
+/* Genişleyen detay alanı stili */
+.project-details {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+[data-bs-theme="light"] .project-details {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+/* ========================================================================== */
+/* photography.html — extracted embedded styles (originally inside <style> in photography.html) */
+/* ========================================================================== */
+.year-sidebar .nav-link {
+    color: var(--bs-secondary-color);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+.year-sidebar .nav-link:hover {
+    color: var(--accent-color);
+    background-color: rgba(255, 107, 0, 0.05);
+}
+.year-sidebar .nav-link.active {
+    color: #ffffff !important;
+    background-color: var(--accent-color) !important;
+}
+[data-bs-theme="light"] .year-sidebar .nav-link.active {
+    color: #ffffff !important;
+}
+
+/* Fotoğraf Kartı ve Üzerine Gelince Çıkan Açıklama Katmanı */
+.gallery-card {
+    position: relative;
+    background-color: transparent;
+    break-inside: avoid;
+    margin-bottom: 8px;
+    overflow: hidden;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Karartma Overlay Katmanı */
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75); /* Karartma oranı */
+    display: flex;
+    flex-direction: column; /* Fixed from flex-column */
+    justify-content: flex-end;
+    padding: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* İmleç üzerine gelince tetiklenenler */
+.gallery-card:hover img {
+    transform: scale(1.03);
+}
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Yazıların Küçüklüğü ve Tipografisi */
+.overlay-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.overlay-meta {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Filtreleme Geçiş Animasyonu */
+.gallery-card.d-none {
+    display: none !important;
+}
+
+
+/* ===========================================================================*/
+/* blog.html — extracted embedded styles (originally inside <style> in blog.html) */
+/* ========================================================================== */
+.blog-card {
+    background-color: var(--bs-body-tertiary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+    position: relative;
+}
+[data-bs-theme="light"] .blog-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.blog-card:hover {
+    border-color: var(--accent-color);
+}
+.blog-img-wrapper {
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.blog-img-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.add-post-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: #ffffff !important;
+    border: none;
+    transition: transform 0.2s ease;
+}
+.add-post-btn:hover {
+    transform: scale(1.1);
+}
+.post-menu-btn {
+    background: none;
+    border: none;
+    color: var(--bs-secondary-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+.post-menu-btn:hover, .post-menu-btn:focus {
+    color: var(--bs-body-color);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+[data-bs-theme="light"] .post-menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.dropdown-menu-end {
+    right: 0;
+    left: auto;
+}
+
+
+/* ========================================================================== */
+/* contact.html — extracted embedded styles (originally inside <style> in contact.html) */
+/* ========================================================================== */
+.contact-icon-box {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--accent-color);
+    font-size: 1.25rem;
+    transition: all 0.2s ease;
+}
+[data-bs-theme="light"] .contact-icon-box {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.contact-link-row:hover .contact-icon-box {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(239, 125, 0, 0.25);
+}
+
+/* ========================================================================== */
+/* End of extracted embedded styles */
+/* ========================================================================== */
+
+/* MUSTAFA GÜDÜCÜ - SİYAH & ALTIN TEMA */
+
+:root {
+    --bs-primary: #d4af37;
+    --bs-primary-rgb: 212, 175, 55;
+    --bs-body-bg: #101010;
+    --bs-body-color: #F5F5F5;
+}
+
+/* Genel sayfa görünümü */
+body {
+    background-color: #101010;
+    color: #F5F5F5;
+    font-family: Arial, sans-serif;
+}
+
+/* Üst menü */
+.navbar {
+    background-color: #171717 !important;
+    border-bottom: 1px solid #D4AF37;
+}
+
+.navbar-brand {
+    color: #D4AF37 !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #D4AF37 !important;
+}
+
+/* Ana başlıklar */
+h1 span,
+.text-primary {
+    color: #D4AF37 !important;
+}
+
+/* Ana butonlar */
+.btn-primary {
+    background-color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    color: #101010 !important;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #B8962E !important;
+    border-color: #B8962E !important;
+}
+
+/* İkinci buton */
+.btn-outline-light:hover {
+    background-color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    color: #101010 !important;
+}
+
+/* Kartlar */
+.card {
+    background-color: #1C1C1C;
+    border: 1px solid #38301C;
+    color: #FFFFFF;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #D4AF37;
+}
+
+/* Yetenek çubukları */
+.progress-bar {
+    background-color: #D4AF37 !important;
+}
+
+/* Alt bilgi */
+footer {
+    background-color: #171717;
+    border-top: 1px solid #D4AF37;
+}
+
+/* Mobil görünüm */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section {
+        padding: 70px 15px;
+    }
+}
+
+/* Gold theme - Bootstrap buttons */
+
+.btn-primary,
+.btn-warning,
+.bg-primary,
+.bg-warning {
+    background-color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    color: #101010 !important;
+}
+
+.btn-primary:hover,
+.btn-warning:hover {
+    background-color: #B8962E !important;
+    border-color: #B8962E !important;
+    color: #101010 !important;
+}
+
+/* Gold badges */
+.badge.bg-warning,
+.badge.bg-primary {
+    background-color: #D4AF37 !important;
+    color: #101010 !important;
+}
+
+/* MUSTAFA GUDUCU - GOLD THEME FIX */
+
+:root {
+    --bs-warning: #D4AF37;
+    --bs-warning-rgb: 212, 175, 55;
+    --bs-primary: #D4AF37;
+    --bs-primary-rgb: 212, 175, 55;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-warning,
+.btn-orange {
+    background-color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    color: #101010 !important;
+}
+
+.btn-primary:hover,
+.btn-warning:hover,
+.btn-orange:hover {
+    background-color: #B8962E !important;
+    border-color: #B8962E !important;
+}
+
+/* Badges */
+.badge,
+.bg-warning,
+.bg-primary {
+    background-color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    color: #101010 !important;
+}
+
+/* Gold text */
+.text-warning,
+.text-primary {
+    color: #D4AF37 !important;
+}
+
+/* Homepage hero background */
+
+.hero-section {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("../images/matrix.gif") !important;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Shared light/dark palette: overrides legacy fixed dark backgrounds. */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #101010;
+  --bs-body-color: #f5f5f5;
+  --bs-tertiary-bg: #171717;
+}
+[data-bs-theme="light"] {
+  --bs-body-bg: #f7f7f4;
+  --bs-body-color: #202124;
+  --bs-tertiary-bg: #ecebe6;
+  --bs-secondary-color: #555b62;
+  --bs-secondary-bg: #e9e8e3;
+  --bs-border-color: #c9c7c0;
+}
+[data-bs-theme="dark"] body { background-color: #101010; color: #f5f5f5; }
+[data-bs-theme="light"] body { background-color: var(--bs-body-bg); color: var(--bs-body-color); }
+[data-bs-theme="light"] .navbar,
+[data-bs-theme="light"] footer { background-color: #ecebe6 !important; }
+[data-bs-theme="light"] .card { background-color: #fff; color: #202124; border-color: #d7d4c9; }
+[data-bs-theme="light"] .card:hover { border-color: #d4af37; }
+[data-bs-theme="light"] .navbar .nav-link { color: #33383c; }
+[data-bs-theme="light"] .navbar .nav-link.active,
+[data-bs-theme="light"] .navbar .nav-link:hover { color: #96731b !important; }
+[data-bs-theme="light"] .text-white-50:not(.hero-section *) { color: #60646a !important; }
+/* The hero image intentionally retains its dark overlay for legible white text. */
+
+/* Unified black and gold accents for all pages */
+:root, [data-bs-theme="dark"], [data-bs-theme="light"] {
+  --accent-color: #D4AF37;
+  --accent-hover: #B8962E;
+  --bs-warning: #D4AF37;
+  --bs-warning-rgb: 212, 175, 55;
+  --bs-primary: #D4AF37;
+  --bs-primary-rgb: 212, 175, 55;
+  --bs-link-color: #D4AF37;
+  --bs-link-hover-color: #B8962E;
+}
+.text-bg-warning, .text-bg-primary { background-color: #D4AF37 !important; color: #101010 !important; }
+.btn-accent, .btn-orange, .btn-warning, .btn-primary { background-color: #D4AF37 !important; border-color: #D4AF37 !important; color: #101010 !important; }
+.btn-accent:hover, .btn-orange:hover, .btn-warning:hover, .btn-primary:hover { background-color: #B8962E !important; border-color: #B8962E !important; color: #101010 !important; }
+.progress-bar.bg-warning { background-color: #D4AF37 !important; }
+
+/* Circular profile photo in the navigation bar across all pages */
+.navbar .navbar-profile-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+/* Turkish / English navigation */
+.language-switch { display: inline-flex; align-items: center; gap: .15rem; white-space: nowrap; }
+.language-switch a { color: var(--bs-body-color); text-decoration: none; font-weight: 700; font-size: .85rem; padding: .3rem .38rem; border-radius: .3rem; }
+.language-switch a[aria-current="page"] { color: #d4af37; background: rgba(212,175,55,.12); }
+.language-switch a:hover, .language-switch a:focus-visible { color: #d4af37; }
+.language-switch .language-divider { opacity: .45; }
+
+/* Mobile navbar icon: gold vertical three dots */
+.navbar-toggler .mobile-menu-icon {
+    color: #D4AF37;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: inline-block;
+}
+
+/* Mobile menu: remove only the border/frame around the three-dot button */
+@media (max-width: 991.98px) {
+  .navbar .navbar-toggler:has(.mobile-menu-icon),
+  .navbar .navbar-toggler:has(.mobile-menu-icon):focus,
+  .navbar .navbar-toggler:has(.mobile-menu-icon):active {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none;
+  }
+}

@@ -1,0 +1,8 @@
+PROJE ŞABLON KAYNAĞI
+
+Şablonun adı: Kullandığımız HTML Portfolio Template
+Şablonun bağlantısı:https://github.com/EgeSoysal/bootstrap-portfolio-template?utm_source=chatgpt.com
+
+Düzenleme:
+HTML5, CSS3 ve JavaScript kullanılarak
+kişisel tanıtım web sitesi için özelleştirilmiştir.
